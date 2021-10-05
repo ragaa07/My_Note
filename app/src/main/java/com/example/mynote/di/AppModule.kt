@@ -10,12 +10,14 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
     @Provides
+    @Singleton
     fun providesNoteDatabase(app: Application): NoteDatabase {
         return Room.databaseBuilder(
             app,
@@ -25,11 +27,13 @@ object AppModule {
     }
 
     @Provides
+    @Singleton
     fun providesNoteRepository(dp:NoteDatabase):NoteRepository{
         return NoteRepositoryImpl(dp.noteDao)
     }
 
     @Provides
+    @Singleton
     fun providesNoteUseCase(repository: NoteRepository):NoteUseCases{
         return NoteUseCases(repository)
     }

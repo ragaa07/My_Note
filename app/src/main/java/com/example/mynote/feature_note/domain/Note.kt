@@ -7,13 +7,15 @@ import com.example.mynote.ui.theme.*
 @Entity
 data class Note(
     @PrimaryKey
-    val id:Int?=null,
-    val title:String,
-    val content:String,
-    val timestamp:Long,
-    val color:Int
+    val id: Int? = null,
+    val title: String,
+    val content: String,
+    val timestamp: Long,
+    val color: Int
 ) {
     companion object {
         val noteColor = listOf(RedOrange, RedPink, BabyBlue, Violet, LightGreen)
     }
 }
+
+class InvalidNoteException(message: String) : Exception(message)

@@ -35,7 +35,7 @@ fun OrderSection(
                 text = context.getString(R.string.date_order),
                 selected = noteOrder is NoteOrder.Date,
                 onSelected = {
-                    onOrderChange(NoteOrder.Title(OrderType.Descending))
+                    onOrderChange(NoteOrder.Date(OrderType.Descending))
                 }
             )
             Spacer(modifier = Modifier.width(8.dp))
@@ -43,11 +43,11 @@ fun OrderSection(
                 text = context.getString(R.string.color_order),
                 selected = noteOrder is NoteOrder.Color,
                 onSelected = {
-                    onOrderChange(NoteOrder.Title(OrderType.Descending))
+                    onOrderChange(NoteOrder.Color(OrderType.Descending))
                 }
             )
         }
-        Spacer(modifier = Modifier.width(16.dp))
+        Spacer(modifier = Modifier.width(20.dp))
         Row(modifier = Modifier.fillMaxWidth()) {
             DefaultRadioButton(
                 text = context.getString(R.string.ascending_order),

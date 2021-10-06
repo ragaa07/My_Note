@@ -20,6 +20,7 @@ import androidx.navigation.NavController
 import com.example.mynote.R
 import com.example.mynote.feature_note.presentaion.note.components.NoteItem
 import com.example.mynote.feature_note.presentaion.note.components.OrderSection
+import com.example.mynote.feature_note.presentaion.util.Screen
 import kotlinx.coroutines.launch
 
 
@@ -35,7 +36,9 @@ fun NotesScreen(
     val scope = rememberCoroutineScope()
     Scaffold(
         floatingActionButton = {
-            FloatingActionButton(onClick = {}, backgroundColor = MaterialTheme.colors.primary) {
+            FloatingActionButton(onClick = {
+                navController.navigate(Screen.AddEditNoteScreen.route)
+            }, backgroundColor = MaterialTheme.colors.primary) {
                 Icon(imageVector = Icons.Default.Add, contentDescription = "Add note")
             }
         },
@@ -53,9 +56,11 @@ fun NotesScreen(
             ) {
                 Text(
                     text = context.getString(R.string.note_screen_header),
-                    style = MaterialTheme.typography.h3
+                    style = MaterialTheme.typography.h4
                 )
-                IconButton(onClick = { }) {
+                IconButton(onClick = {
+                    viewModel.onEvent(NotesEvent.ToggleOrderSection)
+                }) {
                     Icon(imageVector = Icons.Default.Sort, contentDescription = "Sort")
                 }
             }
@@ -80,7 +85,9 @@ fun NotesScreen(
                     NoteItem(note = note, modifier = Modifier
                         .fillMaxWidth()
                         .clickable {
-
+                            navController.navigate(Screen.AddEditNoteScreen.route +
+                                    "?noteId=${note.id}&noteColor=${note.color}"
+                            )
                         }) {
                         viewModel.onEvent(NotesEvent.DeleteNote(note = note))
                         scope.launch {

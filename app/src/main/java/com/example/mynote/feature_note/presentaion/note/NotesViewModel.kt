@@ -2,6 +2,7 @@ package com.example.mynote.feature_note.presentaion.note
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mynote.feature_note.domain.Note
@@ -17,7 +18,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class NotesViewModel @Inject constructor(
-    private val noteUseCases: NoteUseCases
+    private val noteUseCases: NoteUseCases,
 ) : ViewModel() {
 
     private val _state = mutableStateOf(NotesState())

@@ -36,13 +36,17 @@ class NoteUseCases(private val noteRepository: NoteRepository) {
     }
 
     @Throws(InvalidNoteException::class)
-    suspend fun addNote(note: Note){
-        if (note.title.isBlank()){
+    suspend fun addNote(note: Note) {
+        if (note.title.isBlank()) {
             throw InvalidNoteException("The note title can't be empty.")
         }
-        if (note.content.isBlank()){
+        if (note.content.isBlank()) {
             throw InvalidNoteException("The note content can't be empty.")
         }
         noteRepository.addNote(note = note)
+    }
+
+    suspend fun getNoteById(id: Int): Note? {
+        return noteRepository.getNoteById(id)
     }
 }

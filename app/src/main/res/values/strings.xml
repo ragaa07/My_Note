@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">My Note</string>
+    <string name="title_order">Title</string>
+    <string name="date_order">Date</string>
+    <string name="color_order">Color</string>
+    <string name="ascending_order">Ascending</string>
+    <string name="descending_order">Descending</string>
+    <string name="note_screen_header">My Notes</string>
+    <string name="snack_bar_text">Note Deleted</string>
+    <string name="snack_bar_action_label">Undo</string>
 </resources>
